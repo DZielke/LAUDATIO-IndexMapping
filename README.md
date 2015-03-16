@@ -11,4 +11,4 @@ Copyright: © 2015, Working Group Electronic Publishing Computer- and Media Serv
 This project contains the IndexMapping for the SearchIndex in [LAUDATIO-Repository](https://github.com/DZielke/laudatio). The LAUDATIO-Repository is an open source repository for historical corpora. For each corpus in the repository the metadata are TEI-XML. But the SearchIndex in ElasticSearch uses JSON as data format.
 We use Java Bridge, a tomcat webapp, to convert the xml files to json, see also: [LAUDATIO-Repository - Technical Documentation](http://www.laudatio-repository.org/repository/technical-documentation/software/elasticsearch.html).
 
-We use the following mapping to map all fields to the string type but the field that are used for range filters and use not analyzed multifields for the facets:
+Actually, we use the mapping Version 7 (https://github.com/DZielke/LAUDATIO-IndexMapping/tree/master/Schema7) to map all fields to the string type but the field that are used for range filters and use not analyzed multifields for the facets.
