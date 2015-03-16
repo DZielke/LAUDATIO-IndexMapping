@@ -1,0 +1,1498 @@
+{
+	"Schema7" : {
+
+		"dynamic_templates" : [{
+				"date_corpus_revision" : {
+					"mapping" : {
+						"type" : "date",
+						"index" : "not_analyzed",
+						"format" : "yyyy||YYYY-MM||YYYY-MM-dd"
+					},
+					"path_match" : "teiCorpus.teiHeader.revisionDesc.change.@when"
+				}
+			}, {
+				"date_corpus_publication" : {
+					"mapping" : {
+						"type" : "date",
+						"index" : "not_analyzed",
+						"format" : "yyyy||YYYY-MM||YYYY-MM-dd"
+					},
+					"path_match" : "teiCorpus.teiHeader.fileDesc.publicationStmt.date.@when"
+				}
+			}, {
+				"date_document_publication" : {
+					"mapping" : {
+						"type" : "date",
+						"index" : "not_analyzed",
+						"format" : "yyyy||YYYY-MM||DD-MM-YYYY||YYYY-MM-dd"
+					},
+					"path_match" : "teiCorpus.teiCorpus.teiHeader.fileDesc.publicationStmt.date.@when"
+				}
+			}, {
+				"date_preparation_publication" : {
+					"mapping" : {
+						"type" : "date",
+						"index" : "not_analyzed",
+						"format" : "yyyy||YYYY-MM||DD-MM-YYYY||YYYY-MM-dd"
+					},
+					"path_match" : "teiCorpus.teiCorpus.teiHeader.fileDesc.publicationStmt.date.@when"
+				}
+			}, {
+				"extent_corpus" : {
+					"mapping" : {
+						"type" : "integer",
+						"index" : "not_analyzed",
+						"ignore_malformed" : "true"
+					},
+					"path_match" : "teiCorpus.teiHeader.fileDesc.extent.$"
+				}
+			}, {
+				"extent_document" : {
+					"mapping" : {
+						"type" : "integer",
+						"index" : "not_analyzed",
+						"ignore_malformed" : "true"
+					},
+					"path_match" : "teiCorpus.teiCorpus.teiHeader.fileDesc.extent.$"
+				}
+			}, {
+				"extent_preparation" : {
+					"mapping" : {
+						"type" : "integer",
+						"index" : "not_analyzed",
+						"ignore_malformed" : "true"
+					},
+					"path_match" : "teiCorpus.teiCorpus.teiHeader.fileDesc.extent.$"
+				}
+			}, {
+				"title_multifield" : {
+					"mapping" : {
+						"type" : "multi_field",
+						"fields" : {
+							"$" : {
+								"type" : "string",
+								"index" : "analyzed"
+							},
+							"untouched" : {
+								"type" : "string",
+								"index" : "not_analyzed"
+							}
+						}
+					},
+					"path_match" : "*fileDesc.titleStmt.title.$"
+				}
+			}, {
+				"docid_multifield" : {
+					"mapping" : {
+						"type" : "multi_field",
+						"fields" : {
+							"@id" : {
+								"type" : "string",
+								"index" : "analyzed"
+							},
+							"untouched" : {
+								"type" : "string",
+								"index" : "not_analyzed"
+							}
+						}
+					},
+					"path_match" : "teiCorpus.teiCorpus.teiHeader.fileDesc.@id"
+				}
+			}, {
+				"idno_multifield" : {
+					"mapping" : {
+						"type" : "multi_field",
+						"fields" : {
+							"$" : {
+								"type" : "string",
+								"index" : "analyzed"
+							},
+							"untouched" : {
+								"type" : "string",
+								"index" : "not_analyzed"
+							}
+						}
+					},
+					"path_match" : "*fileDesc.publicationStmt.idno.$"
+				}
+			}, {
+				"integer_string" : {
+					"mapping" : {
+						"type" : "string"
+					},
+					"match" : "*",
+					"match_mapping_type" : "integer"
+				}
+			}, {
+				"double_string" : {
+					"mapping" : {
+						"type" : "string"
+					},
+					"match" : "*",
+					"match_mapping_type" : "double"
+				}
+			}, {
+				"float_string" : {
+					"mapping" : {
+						"type" : "string"
+					},
+					"match" : "*",
+					"match_mapping_type" : "float"
+				}
+			}, {
+				"long_string" : {
+					"mapping" : {
+						"type" : "string"
+					},
+					"match" : "*",
+					"match_mapping_type" : "long"
+				}
+			}, {
+				"short_string" : {
+					"mapping" : {
+						"type" : "string"
+					},
+					"match" : "*",
+					"match_mapping_type" : "short"
+				}
+			}, {
+				"byte_string" : {
+					"mapping" : {
+						"type" : "string"
+					},
+					"match" : "*",
+					"match_mapping_type" : "byte"
+				}
+			}, {
+				"date_string" : {
+					"mapping" : {
+						"type" : "string"
+					},
+					"match" : "*",
+					"match_mapping_type" : "date"
+				}
+			}, {
+				"boolean_string" : {
+					"mapping" : {
+						"type" : "string"
+					},
+					"match" : "*",
+					"match_mapping_type" : "boolean"
+				}
+			}
+		],
+		"properties" : {
+			"teiCorpus" : {
+
+				"properties" : {
+					"teiCorpus" : {
+
+						"properties" : {
+							"teiCorpus" : {
+								"dynamic" : "true",
+								"properties" : {
+									"teiHeader" : {
+										"dynamic" : "true",
+										"properties" : {
+											"@type" : {
+												"type" : "string"
+											},
+											"encodingDesc" : {
+												"dynamic" : "true",
+												"properties" : {
+													"@n" : {
+														"type" : "string"
+													},
+													"@style" : {
+														"type" : "string"
+													},
+													"appInfo" : {
+														"dynamic" : "true",
+														"properties" : {
+															"@n" : {
+																"type" : "string"
+															},
+															"@style" : {
+																"type" : "string"
+															},
+															"application" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"@ident" : {
+																		"type" : "string"
+																	},
+																	"@style" : {
+																		"type" : "string"
+																	},
+																	"@subtype" : {
+																		"type" : "string"
+																	},
+																	"@type" : {
+																		"type" : "string"
+																	},
+																	"@version" : {
+																		"type" : "string"
+																	},
+																	"label" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"$" : {
+																				"type" : "string"
+																			}
+																		}
+																	},
+																	"p" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"$" : {
+																				"type" : "string"
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													},
+													"editorialDecl" : {
+														"dynamic" : "true",
+														"properties" : {
+															"correction" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"@method" : {
+																		"type" : "string"
+																	},
+																	"@status" : {
+																		"type" : "string"
+																	},
+																	"p" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"$" : {
+																				"type" : "string"
+																			}
+																		}
+																	}
+																}
+															},
+															"normalization" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"@method" : {
+																		"type" : "string"
+																	},
+																	"p" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"$" : {
+																				"type" : "string"
+																			}
+																		}
+																	}
+																}
+															},
+															"p" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"$" : {
+																		"type" : "string"
+																	}
+																}
+															},
+															"segmentation" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"@corresp" : {
+																		"type" : "string"
+																	},
+																	"@style" : {
+																		"type" : "string"
+																	},
+																	"p" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"$" : {
+																				"type" : "string"
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													},
+													"projectDesc" : {
+														"dynamic" : "true",
+														"properties" : {
+															"p" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"$" : {
+																		"type" : "string"
+																	},
+																	"ref" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"@target" : {
+																				"type" : "string"
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											"fileDesc" : {
+												"dynamic" : "true",
+												"properties" : {
+												    "extent" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "string"
+															},
+															"@type" : {
+																"type" : "string"
+															}
+														}
+													},
+													"publicationStmt" : {
+														"dynamic" : "true",
+														"properties" : {
+															"date" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"$" : {
+																		"type" : "string"
+																	},
+																	"@type" : {
+																		"type" : "string"
+																	},
+																	"@when" : {
+																		"type" : "string"
+																	}
+																}
+															}
+														}
+													},
+													"sourceDesc" : {
+														"dynamic" : "true",
+														"properties" : {
+															"p" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"$" : {
+																		"type" : "string"
+																	},
+																	"ref" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"@target" : {
+																				"type" : "string"
+																			},
+																			"@type" : {
+																				"type" : "string"
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													},
+													"titleStmt" : {
+														"dynamic" : "true",
+														"properties" : {
+															"author" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"@n" : {
+																		"type" : "string"
+																	},
+																	"@role" : {
+																		"type" : "string"
+																	},
+																	"affiliation" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"orgName" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					},
+																					"@type" : {
+																						"type" : "string"
+																					}
+																				}
+																			}
+																		}
+																	},
+																	"persName" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"forename" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					}
+																				}
+																			},
+																			"surname" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															},
+															"editor" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"@n" : {
+																		"type" : "string"
+																	},
+																	"@role" : {
+																		"type" : "string"
+																	},
+																	"affiliation" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"orgName" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					},
+																					"@type" : {
+																						"type" : "string"
+																					}
+																				}
+																			}
+																		}
+																	},
+																	"persName" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"forename" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					}
+																				}
+																			},
+																			"surname" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															},
+															"title" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"$" : {
+																		"type" : "multi_field",
+																		"fields" : {
+																			"$" : {
+																				"type" : "string"
+																			},
+																			"untouched" : {
+																				"type" : "string",
+																				"index" : "not_analyzed",
+																				"omit_norms" : true,
+																				"index_options" : "docs",
+																				"include_in_all" : false
+																			}
+																		}
+
+																	},
+																	"@corresp" : {
+																		"type" : "string"
+																	},
+																	"@type" : {
+																		"type" : "string"
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											"revisionDesc" : {
+												"dynamic" : "true",
+												"properties" : {
+													"change" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "string"
+															},
+															"@n" : {
+																"type" : "string"
+															},
+															"@type" : {
+																"type" : "string"
+															},
+															"@when" : {
+																"type" : "string"
+															},
+															"@who" : {
+																"type" : "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"teiHeader" : {
+								"type" : "nested",
+								"include_in_root" : true,
+
+								"properties" : {
+									"@style" : {
+										"type" : "string"
+									},
+									"@type" : {
+										"type" : "string"
+									},
+									"encodingDesc" : {
+
+										"properties" : {
+											"schemaSpec" : {
+
+												"properties" : {
+													"@ident" : {
+														"type" : "string"
+													},
+													"elementSpec" : {
+													    "type" : "nested",
+								                        "include_in_parent" : true,
+								                        "include_in_root" : true,
+
+														"properties" : {
+															"@ident" : {
+																"type" : "string",
+																"analyzer" : "simple"
+															},
+															"valList" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"valItem" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"@corresp" : {
+																				"type" : "string"
+																			},
+																			"@ident" : {
+																				"type" : "string"
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									},
+									"fileDesc" : {
+										"dynamic" : "true",
+										"properties" : {
+											"@id" : {
+												"type" : "multi_field",
+												"fields" : {
+													"@id" : {
+														"type" : "string"
+													},
+													"untouched" : {
+														"type" : "string",
+														"index" : "not_analyzed",
+														"omit_norms" : true,
+														"index_options" : "docs",
+														"include_in_all" : false
+													}
+												}
+
+											},
+											"extent" : {
+												"dynamic" : "true",
+												"properties" : {
+													"$" : {
+														"type" : "integer",
+														"ignore_malformed" : true
+
+													},
+													"@type" : {
+														"analyzer" : "simple",
+														"type" : "string"
+													}
+												}
+											},
+											"publicationStmt" : {
+												"dynamic" : "true",
+												"properties" : {
+													"biblScope" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "string"
+															},
+															"@unit" : {
+																"type" : "string"
+															}
+														}
+													},
+													"date" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "string"
+															},
+															"@when" : {
+																"type" : "date",
+																"format" : "yyyy||YYYY-MM||YYYY-MM-dd"
+
+															}
+														}
+													},
+													"idno" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "multi_field",
+																"fields" : {
+																	"$" : {
+																		"type" : "string"
+																	},
+																	"untouched" : {
+																		"type" : "string",
+																		"index" : "not_analyzed",
+																		"omit_norms" : true,
+																		"index_options" : "docs",
+																		"include_in_all" : false
+																	}
+																}
+
+															}
+														}
+													},
+													"pubPlace" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "string"
+															}
+														}
+													},
+													"publisher" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "string"
+															}
+														}
+													}
+												}
+											},
+											"seriesStmt" : {
+												"dynamic" : "true",
+												"properties" : {
+													"biblScope" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "string"
+															},
+															"@type" : {
+																"type" : "string"
+															},
+															"@unit" : {
+																"type" : "string"
+															}
+														}
+													},
+													"editor" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "string"
+															}
+														}
+													},
+													"title" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "string"
+															}
+														}
+													}
+												}
+											},
+											"sourceDesc" : {
+												"dynamic" : "true",
+												"properties" : {
+													"@n" : {
+														"type" : "string"
+													},
+													"msDesc" : {
+														"dynamic" : "true",
+														"properties" : {
+															"history" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"origin" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"locus" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					}
+																				}
+																			},
+																			"objectType" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					}
+																				}
+																			},
+																			"origDate" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					},
+																					"@notAfter-custom" : {
+																						"type" : "string"
+																					},
+																					"@notBefore-custom" : {
+																						"type" : "string"
+																					},
+																					"@precision" : {
+																						"type" : "string"
+																					}
+																				}
+																			},
+																			"origPlace" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					}
+																				}
+																			},
+																			"title" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															},
+															"msIdentifier" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"altIdentifier" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"collection" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					}
+																				}
+																			},
+																			"idno" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					}
+																				}
+																			},
+																			"repository" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					}
+																				}
+																			}
+																		}
+																	},
+																	"msName" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"$" : {
+																				"type" : "string"
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													},
+													"recordHist" : {
+														"dynamic" : "true",
+														"properties" : {
+															"source" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"@facs" : {
+																		"type" : "string"
+																	},
+																	"ref" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"$" : {
+																				"type" : "string"
+																			},
+																			"@target" : {
+																				"type" : "string"
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											"titleStmt" : {
+												"dynamic" : "true",
+												"properties" : {
+													"author" : {
+														"dynamic" : "true",
+														"properties" : {
+															"forename" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"$" : {
+																		"type" : "string"
+																	}
+																}
+															},
+															"persName" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"forename" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"$" : {
+																				"type" : "string"
+																			}
+																		}
+																	},
+																	"persName" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"forename" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					}
+																				}
+																			},
+																			"surname" : {
+																				"dynamic" : "true",
+																				"properties" : {
+																					"$" : {
+																						"type" : "string"
+																					}
+																				}
+																			}
+																		}
+																	},
+																	"surname" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"$" : {
+																				"type" : "string"
+																			}
+																		}
+																	}
+																}
+															},
+															"surname" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"$" : {
+																		"type" : "string"
+																	}
+																}
+															}
+														}
+													},
+													"editor" : {
+														"dynamic" : "true",
+														"properties" : {
+															"@n" : {
+																"type" : "string"
+															},
+															"forename" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"$" : {
+																		"type" : "string"
+																	}
+																}
+															},
+															"persName" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"forename" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"$" : {
+																				"type" : "string"
+																			}
+																		}
+																	},
+																	"surname" : {
+																		"dynamic" : "true",
+																		"properties" : {
+																			"$" : {
+																				"type" : "string"
+																			}
+																		}
+																	}
+																}
+															},
+															"surname" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"$" : {
+																		"type" : "string"
+																	}
+																}
+															}
+														}
+													},
+													"title" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "multi_field",
+																"fields" : {
+																	"$" : {
+																		"type" : "string"
+																	},
+																	"untouched" : {
+																		"type" : "string",
+																		"index" : "not_analyzed",
+																		"omit_norms" : true,
+																		"index_options" : "docs",
+																		"include_in_all" : false
+																	}
+																}
+															},
+															"@type" : {
+																"type" : "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									},
+									"profileDesc" : {
+										"dynamic" : "true",
+										"properties" : {
+											"langUsage" : {
+												"dynamic" : "true",
+												"properties" : {
+													"language" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "string"
+															},
+															"@ident" : {
+																"type" : "string"
+															},
+															"@style" : {
+																"type" : "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									},
+									"revisionDesc" : {
+										"dynamic" : "true",
+										"properties" : {
+											"change" : {
+												"dynamic" : "true",
+												"properties" : {
+													"$" : {
+														"type" : "string"
+													},
+													"@n" : {
+														"type" : "string"
+													},
+													"@type" : {
+														"type" : "string"
+													},
+													"@when" : {
+														"type" : "string"
+													},
+													"@who" : {
+														"type" : "string"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"teiHeader" : {
+						"dynamic" : "true",
+						"properties" : {
+							"@type" : {
+								"type" : "string"
+							},
+							"encodingDesc" : {
+								"dynamic" : "true",
+								"properties" : {
+									"@n" : {
+										"type" : "string"
+									},
+									"appInfo" : {
+										"dynamic" : "true",
+										"properties" : {
+											"application" : {
+												"dynamic" : "true",
+												"properties" : {
+													"@ident" : {
+														"type" : "string"
+													},
+													"@version" : {
+														"type" : "string"
+													},
+													"label" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									},
+									"editorialDecl" : {
+										"dynamic" : "true",
+										"properties" : {
+											"normalization" : {
+												"dynamic" : "true",
+												"properties" : {
+													"p" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "string"
+															}
+														}
+													}
+												}
+											},
+											"segmentation" : {
+												"dynamic" : "true",
+												"properties" : {
+													"@n" : {
+														"type" : "string"
+													},
+													"p" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									},
+									"projectDesc" : {
+										"dynamic" : "true",
+										"properties" : {
+											"p" : {
+												"dynamic" : "true",
+												"properties" : {
+													"$" : {
+														"type" : "string"
+													},
+													"ref" : {
+														"dynamic" : "true",
+														"properties" : {
+															"@target" : {
+																"type" : "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									},
+									"tagsDecl" : {
+										"dynamic" : "true",
+										"properties" : {
+											"namespace" : {
+												"dynamic" : "true",
+												"properties" : {
+													"@corresp" : {
+														"type" : "string"
+													},
+													"@id" : {
+														"type" : "string"
+													},
+													"@name" : {
+														"type" : "string"
+													},
+													"@rend" : {
+														"type" : "string"
+													},
+													"tagUsage" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "string"
+															},
+															"@gi" : {
+																"type" : "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"fileDesc" : {
+								"dynamic" : "true",
+								"properties" : {
+									"extent" : {
+										"dynamic" : "true",
+										"properties" : {
+										    "authority" : {
+												"dynamic" : "true",
+												"properties" : {
+        											"$" : {
+        												"type" : "integer",
+        												"ignore_malformed" : true
+        
+        											},
+        											"@type" : {
+        												"type" : "string"
+        											}
+												}
+											}
+										}
+									},
+									"publicationStmt" : {
+										"dynamic" : "true",
+										"properties" : {
+											"authority" : {
+												"dynamic" : "true",
+												"properties" : {
+													"$" : {
+														"type" : "string"
+													}
+												}
+											},
+											"availability" : {
+												"dynamic" : "true",
+												"properties" : {
+													"@status" : {
+														"type" : "string"
+													},
+													"p" : {
+														"dynamic" : "true",
+														"properties" : {
+															"$" : {
+																"type" : "string"
+															}
+														}
+													}
+												}
+											},
+											"date" : {
+												"dynamic" : "true",
+												"properties" : {
+													"$" : {
+														"type" : "string"
+													},
+													"@type" : {
+														"type" : "string"
+													},
+													"@when" : {
+														"type" : "date",
+														"format" : "yyyy||YYYY-MM||YYYY-MM-dd"
+
+													}
+												}
+											},
+											"idno" : {
+												"dynamic" : "true",
+												"properties" : {
+													"$" : {
+														"type" : "multi_field",
+														"fields" : {
+															"$" : {
+																"type" : "string"
+															},
+															"untouched" : {
+																"type" : "string",
+																"index" : "not_analyzed",
+																"omit_norms" : true,
+																"index_options" : "docs",
+																"include_in_all" : false
+															}
+														}
+
+													}
+												}
+											}
+										}
+									},
+									"sourceDesc" : {
+										"dynamic" : "true",
+										"properties" : {
+											"list" : {
+												"dynamic" : "true",
+												"properties" : {
+													"@type" : {
+														"type" : "string"
+													},
+													"item" : {
+														"dynamic" : "true",
+														"properties" : {
+															"@corresp" : {
+																"type" : "string"
+															},
+															"@n" : {
+																"type" : "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									},
+									"titleStmt" : {
+										"dynamic" : "true",
+										"properties" : {
+											"author" : {
+												"dynamic" : "true",
+												"properties" : {
+													"@n" : {
+														"type" : "string"
+													},
+													"@role" : {
+														"type" : "string"
+													},
+													"affiliation" : {
+														"dynamic" : "true",
+														"properties" : {
+															"orgName" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"$" : {
+																		"type" : "string"
+																	},
+																	"@type" : {
+																		"type" : "string"
+																	}
+																}
+															}
+														}
+													},
+													"persName" : {
+														"dynamic" : "true",
+														"properties" : {
+															"forename" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"$" : {
+																		"type" : "string"
+																	}
+																}
+															},
+															"surname" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"$" : {
+																		"type" : "string"
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											"editor" : {
+												"dynamic" : "true",
+												"properties" : {
+													"@n" : {
+														"type" : "string"
+													},
+													"@role" : {
+														"type" : "string"
+													},
+													"affiliation" : {
+														"dynamic" : "true",
+														"properties" : {
+															"orgName" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"$" : {
+																		"type" : "string"
+																	},
+																	"@type" : {
+																		"type" : "string"
+																	}
+																}
+															}
+														}
+													},
+													"persName" : {
+														"dynamic" : "true",
+														"properties" : {
+															"forename" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"$" : {
+																		"type" : "string"
+																	}
+																}
+															},
+															"surname" : {
+																"dynamic" : "true",
+																"properties" : {
+																	"$" : {
+																		"type" : "string"
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											"title" : {
+												"dynamic" : "true",
+												"properties" : {
+													"$" : {
+														"type" : "multi_field",
+														"fields" : {
+															"$" : {
+																"type" : "string"
+															},
+															"untouched" : {
+																"type" : "string",
+																"index" : "not_analyzed",
+																"omit_norms" : true,
+																"index_options" : "docs",
+																"include_in_all" : false
+															}
+														}
+
+													},
+													"@type" : {
+														"type" : "string"
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"profileDesc" : {
+								"dynamic" : "true",
+								"properties" : {
+									"langUsage" : {
+										"dynamic" : "true",
+										"properties" : {
+											"language" : {
+												"dynamic" : "true",
+												"properties" : {
+													"$" : {
+														"type" : "string"
+													},
+													"@ident" : {
+														"type" : "string"
+													},
+													"@style" : {
+														"type" : "string"
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"revisionDesc" : {
+								"dynamic" : "true",
+								"properties" : {
+									"change" : {
+										"dynamic" : "true",
+										"properties" : {
+											"$" : {
+												"type" : "string"
+											},
+											"@n" : {
+												"type" : "string"
+											},
+											"@type" : {
+												"type" : "string"
+											},
+											"@when" : {
+												"type" : "date",
+												"format" : "yyyy||YYYY-MM||YYYY-MM-dd"
+
+											},
+											"@who" : {
+												"type" : "string"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
